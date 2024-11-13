@@ -1,5 +1,5 @@
 -- Carga la biblioteca de UI
-local Library = loadstring(game:HttpGet("loadstring(game:HttpGet(https://raw.githubusercontent.com/bunblox20/SONIC-BASICO/refs/heads/master/sonic2))"))()
+local Library = loadstring(game:HttpGet("loadstring(game:HttpGet(https://raw.githubusercontent.com/bunblox20/SONIC-BASICO/heads/master/sonic2))"))()
 local Window = Library.CreateLib(" Sonic Ultimate RPG GUI ", "RJTheme3")
 
 -- Configura la pestaña de LocalPlayer
