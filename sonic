@@ -1,0 +1,92 @@
+-- Carga la biblioteca de UI
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Robojini/Tuturial_UI_Library/main/UI_Template_1"))()
+local Window = Library.CreateLib("Frakki's Sonic Ultimate RPG GUI | 1.1", "RJTheme3")
+
+-- Configura la pestaña de LocalPlayer
+local Tab = Window:NewTab("LocalPlayer")
+local Section = Tab:NewSection("LocalPlayer")
+
+Section:NewSlider("WalkSpeed", "Changing your WalkSpeed", 500, 16, function(s)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+Section:NewSlider("JumpPower", "Changing your JumpPower", 500, 50, function(s)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+
+-- Configura la pestaña de Rings
+local Tab = Window:NewTab("Rings")
+local Section = Tab:NewSection("Rings")
+
+-- Variable para controlar el auto-agarre de anillos
+local collectingRings = false
+
+-- Agregar un botón para activar/desactivar el auto-agarre de anillos
+Section:NewToggle("Auto Collect Rings", "Toggle ring auto collection", function(state)
+    collectingRings = state
+    if collectingRings then
+        -- Inicia el bucle de recolección de anillos
+        while collectingRings do
+            wait(1) -- Espera 1 segundo entre cada recolección
+            for i, v in pairs(game:GetDescendants()) do
+                if v.Name == 'Ring' and collectingRings then
+                    v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+                end
+            end
+        end
+    end
+end)
+
+-- Botón de recolección de anillos única
+Section:NewButton("Collect all rings once", "Collects all rings once", function()
+    for i, v in pairs(game:GetDescendants()) do
+        if v.Name == 'Ring' then
+            v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+        end
+    end
+end)
+
+-- Configura la pestaña de Chaos Emeralds
+local Tab = Window:NewTab("Chaos Emeralds")
+local Section = Tab:NewSection("Chaos Emeralds")
+
+-- Botones para recoger cada esmeralda del caos
+Section:NewButton("White", "", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").ChaosEmeralds.White.CFrame
+end)
+
+Section:NewButton("Blue", "", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").ChaosEmeralds.Blue.CFrame
+end)
+
+Section:NewButton("Cyan", "", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").ChaosEmeralds.Cyan.CFrame
+end)
+
+Section:NewButton("Green", "", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").ChaosEmeralds.Green.CFrame
+end)
+
+Section:NewButton("Purple", "", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").ChaosEmeralds.Purple.CFrame
+end)
+
+Section:NewButton("Red", "", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").ChaosEmeralds.Red.CFrame
+end)
+
+Section:NewButton("Yellow", "", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").ChaosEmeralds.Yellow.CFrame
+end)
+
+-- Configura la pestaña de Mics para cerrar la GUI
+local Tab = Window:NewTab("Mics")
+local Section = Tab:NewSection("Close GUI")
+
+Section:NewKeybind("CloseGUI", "Closes the GUI", Enum.KeyCode.LeftAlt, function()
+    Library:ToggleUI()
+end)
+
+-- Pestaña de créditos
+local Tab = Window:NewTab("Credits")
+local Section = Tab:NewSection("Coded By BUNBLOX")
