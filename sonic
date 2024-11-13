@@ -1,6 +1,6 @@
 -- Carga la biblioteca de UI
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Robojini/Tuturial_UI_Library/main/UI_Template_1"))()
-local Window = Library.CreateLib(" Sonic Ultimate RPG GUI ", "RJTheme3")
+local Window = Library.CreateLib("bunblox's Sonic Ultimate RPG GUI | 1.1", "RJTheme3")
 
 -- Configura la pestaña de LocalPlayer
 local Tab = Window:NewTab("LocalPlayer")
@@ -89,4 +89,4 @@ end)
 
 -- Pestaña de créditos
 local Tab = Window:NewTab("Credits")
-local Section = Tab:NewSection("code by bunblox")
+local Section = Tab:NewSection("Coded By bunblox")
